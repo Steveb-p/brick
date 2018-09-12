@@ -1,0 +1,44 @@
+version: 2
+"-": &dockerbuild
+  steps:
+    - run:
+        name: Install
+        command: |
+          sudo apt-get update
+          yes | sudo apt install git openssh-server openssh-client ninja || true
+          yes | sudo apt-get install libgtk2.0-dev libudev1 libnss3 \
+            libgconf-2-4 libnotify-dev libxss-dev \
+            libasound2 \
+            || true
+
+    - checkout
+    - run:
+        name: CMake
+        command: mkdir build; cd build; cmake -G Ninja -DSKIP_BRICK_REGISTER=1 ..
+    - run:
+        name: Build
+        command: cd build; cmake --build .
+jobs:
+  build-latest:
+    <<: *dockerbuild
+    docker:
+      - image: lasote/conangcc8
+  build-gcc7:
+    <<: *dockerbuild
+    docker:
+      - image: lasote/conangcc7
+  build-clang5:
+    <<: *dockerbuild
+    docker:
+      - image: lasote/conanclang50
+workflows:
+  version: 2
+  check_compile:
+    jobs:
+      - build-latest
+      - build-gcc7:
+          requires:
+            - build-latest
+      - build-clang5:
+          requires:
+            - build-latest
