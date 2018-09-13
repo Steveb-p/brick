@@ -21,24 +21,28 @@ version: 2
 jobs:
   build-latest:
     <<: *dockerbuild
-    docker:
-      - image: lasote/conangcc8
-  build-gcc7:
+    docker: [ image: lasote/conangcc8 ]
+
+  build-gcc49:
     <<: *dockerbuild
-    docker:
-      - image: lasote/conangcc7
-  build-clang5:
+    docker: [ image: lasote/conangcc49 ]
+  build-gcc64:
     <<: *dockerbuild
-    docker:
-      - image: lasote/conanclang50
+    docker: [ image: lasote/conangcc64 ]
+
+  build-clang60:
+    <<: *dockerbuild
+    docker: [ image: lasote/conanclang60 ]
+  build-clang39:
+    <<: *dockerbuild
+    docker: [ image: lasote/conanclang39 ]
+
 workflows:
   version: 2
   check_compile:
     jobs:
       - build-latest
-      - build-gcc7:
-          requires:
-            - build-latest
-      - build-clang5:
-          requires:
-            - build-latest
+      - build-gcc49:   { requires: [ build-latest ] }
+      - build-gcc64:   { requires: [ build-latest ] }
+      - build-clang60: { requires: [ build-latest ] }
+      - build-clang39: { requires: [ build-latest ] }
