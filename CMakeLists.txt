@@ -218,7 +218,7 @@ if(OS_LINUX)
   # -Werror                         = Treat warnings as errors
   # -Wno-missing-field-initializers = Don't warn about missing field initializers
   # -Wno-unused-parameter           = Don't warn about unused parameters
-  set(CEF_COMPILER_FLAGS          "-fno-strict-aliasing -fPIC -fstack-protector -funwind-tables -fvisibility=hidden --param=ssp-buffer-size=4 -pipe -pthread -Wall -Werror -Wno-missing-field-initializers -Wno-unused-parameter")
+  set(CEF_COMPILER_FLAGS          "-fno-strict-aliasing -fPIC -fstack-protector -funwind-tables -fvisibility=hidden --param=ssp-buffer-size=4 -pipe -pthread -Wall -Wno-missing-field-initializers -Wno-unused-parameter")
   # -std=c99                        = Use the C99 language standard
   set(CEF_C_COMPILER_FLAGS        "-std=c99")
   # -fno-rtti                       = Disable real-time type information
@@ -346,7 +346,7 @@ if(OS_MACOSX)
   # -Wnewline-eof                   = Warn about no newline at end of file
   # -Wno-missing-field-initializers = Don't warn about missing field initializers
   # -Wno-unused-parameter           = Don't warn about unused parameters
-  set(CEF_COMPILER_FLAGS          "-fno-strict-aliasing -fstack-protector -funwind-tables -fvisibility=hidden -Wall -Wendif-labels -Werror -Wextra -Wnewline-eof -Wno-missing-field-initializers -Wno-unused-parameter")
+  set(CEF_COMPILER_FLAGS          "-fno-strict-aliasing -fstack-protector -funwind-tables -fvisibility=hidden -Wall -Wendif-labels -Wextra -Wnewline-eof -Wno-missing-field-initializers -Wno-unused-parameter")
   # -std=c99                        = Use the C99 language standard
   set(CEF_C_COMPILER_FLAGS        "-std=c99")
   # -fno-exceptions                 = Disable exceptions
@@ -364,7 +364,7 @@ if(OS_MACOSX)
   # -O3                             = Optimize for maximum speed plus a few extras
   set(CEF_COMPILER_FLAGS_RELEASE  "-O3")
   # -Wl,-search_paths_first         = Search for static or shared library versions in the same pass
-  # -Wl,-ObjC                       = Support creation of creation of ObjC static libraries 
+  # -Wl,-ObjC                       = Support creation of creation of ObjC static libraries
   # -Wl,-pie                        = Generate position-independent code suitable for executables only
   set(CEF_LINKER_FLAGS            "-Wl,-search_paths_first -Wl,-ObjC -Wl,-pie")
   # -Wl,-dead_strip                 = Strip dead code
