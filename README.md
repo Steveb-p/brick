@@ -100,7 +100,7 @@ sudo apt-get install desktop-file-utils xdg-utils
 
 # Let's make it
 mkdir ~/tmp && cd ~/tmp
-git clone --recursive https://github.com/buglloc/brick.git
+git clone --recursive https://github.com/Steveb-p/brick.git
 mkdir build && cd build
 cmake ../brick
 make
